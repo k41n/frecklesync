@@ -8,8 +8,14 @@ task :sync_freckle => :environment do
     if destination_project
       puts "\tDestination project found"
       internal_project.entries(:today).each do |entry|
-        puts "\t\tCopying entry #{entry.description}"
-        entry.copy_to(destination_project)
+        if destination_project.entries(:today).any? do |existing_entry|
+          existing_entry.source_url == entry.url
+        end
+          puts "\t\tEntry already exists, skipping"
+        else
+          puts "\t\tCopying entry #{entry.description}"
+          entry.copy_to(destination_project)
+        end
       end
     else
       puts "\tProject #{external_name} is not found"

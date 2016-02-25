@@ -5,7 +5,7 @@ class FreckleApi
   include Singleton
 
   def projects
-    Rails.cache.fetch('FreckleProjects', expires_at: 1.hour) do
+    Rails.cache.fetch('FreckleProjects', expires_at: 1.second) do
       wrap connection.get_projects
     end
   end
@@ -13,7 +13,7 @@ class FreckleApi
   def entries_for_project(id, condition)
     Rails.cache.fetch(
       ['EntriesForProject', id, condition],
-      expires_at: 1.hour
+      expires_at: 1.second
     ) do
       wrap_entries connection.get_project_entries(
         id,

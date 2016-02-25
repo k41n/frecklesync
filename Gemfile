@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.0'
+
 gem 'rails', '4.2.5.1'
 # gem 'activeadmin', github: 'activeadmin'
 # Use sqlite3 as the database for Active Record

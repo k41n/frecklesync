@@ -4,7 +4,10 @@ class FreckleEntry
   end
 
   def copy_to(project)
-    FreckleApi.instance.create_entry(@attrs.to_h.merge(project_id: project.id))
+    FreckleApi.instance.create_entry(@attrs.to_h.merge(
+      project_id: project.id,
+      source_url: @attrs.url
+    ))
   end
 
   private
