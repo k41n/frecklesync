@@ -8,7 +8,7 @@ class FreckleProject
   end
 
   def self.all
-    FreckleApi.instance.projects
+    FreckleApi.instance.projects(per_page: 1000)
   end
 
   def self.internal
