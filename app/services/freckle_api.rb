@@ -4,8 +4,8 @@ require 'freckle'
 class FreckleApi
   include Singleton
 
-  def projects
-    wrap connection.get_projects
+  def projects(opts)
+    wrap connection.get_projects(opts)
   end
 
   def entries_for_project(id, condition)
